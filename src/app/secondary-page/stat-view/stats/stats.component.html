@@ -1,0 +1,23 @@
+<div class="statViewContainer">
+    <div class="statViewResponsive">
+        <div class="statViewContent" *ngIf="stats">
+            <div class="statViewHeadline">
+                <div class="statViewHeadlineLeft">
+                    <h1>CRYPTO MARKET STATS</h1>
+                </div>
+                <div class="statViewHeadlineRight">
+                    <a (click)="setTimeStamp('5y')">5 YEARS</a>
+                    <a (click)="setTimeStamp('3y')">3 YEARS</a>
+                    <a (click)="setTimeStamp('1y')">1 YEAR</a>
+                    <a (click)="setTimeStamp('3m')">3 MONTHS</a>
+                    <a (click)="setTimeStamp('30d')">30 DAYS</a>
+                    <a (click)="setTimeStamp('7d')">7 DAYS</a>
+                    <a (click)="setTimeStamp('24h')">24 HOURS</a>
+                    <a (click)="setTimeStamp('12h')">12 HOURS</a>
+                    <a (click)="setTimeStamp('3h')">3 HOURS</a>
+                    <a (click)="setTimeStamp('1h')">1 HOUR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

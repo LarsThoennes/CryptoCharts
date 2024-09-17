@@ -12,6 +12,9 @@ export class FetchCryptoDataService {
   private SingleCoinSubject = new BehaviorSubject<any[]>([]);
   public singleCoin$ = this.SingleCoinSubject.asObservable();
 
+  private StatsSubject = new BehaviorSubject<any[]>([]);
+  public coinStats$ = this.StatsSubject.asObservable();
+
   options = {
     method: 'GET',
     headers: {
@@ -33,11 +36,23 @@ export class FetchCryptoDataService {
 
   async loadCoinView(uuid: any) {
     try {
+      localStorage.removeItem('coin')
+      localStorage.setItem('coin', uuid)
       const response = await fetch(`https://api.coinranking.com/v2/coin/${uuid}`, this.options);
       const result = await response.json();
       this.SingleCoinSubject.next(result.data.coin); 
       console.log(result);
-      localStorage.setItem('coin', uuid)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async visitCrypto(time: any) {
+    try {
+      const response = await fetch(`https://api.coinranking.com/v2/stats/coins?timePeriod=${time}`, this.options);
+      const result = await response.json();
+      this.StatsSubject.next(result.data.stats); 
+      console.log(result);
     } catch (error) {
       console.error(error);
     }

@@ -22,36 +22,55 @@ export class CoinViewComponent implements OnInit, OnDestroy {
 
   coin: any = {};
   subscription!: Subscription;
-
   todayChange: boolean = false;
   date: any;
+  chartColor: any
 
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: this.createGradient(), 
+          font: {
+            size: 14,
+          }
+        }
+      },
+    },
     scales: {
       x: {
-        beginAtZero: true
+        ticks: {
+          color: this.createGradient(), 
+          font: {
+            size: 12,
+          }
+        }
       },
       y: {
-        beginAtZero: false,
-        
+        ticks: {
+          color: this.createGradient(), 
+          font: {
+            size: 12,
+          }
+        }
       }
     }
   };
   
-
   public lineChartData: ChartData<'line'> = {
     labels: [],
     datasets: [
       {
         data: [],
-        label: 'Coin Price Over Time',
+        label: 'Coin Price',
         borderColor: 'rgba(0, 123, 255, 1)',
-        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+        backgroundColor: this.createGradient(),
         fill: true,
       }
     ]
   };
+  
 
   public lineChartType: 'line' = 'line';
 
@@ -72,6 +91,7 @@ export class CoinViewComponent implements OnInit, OnDestroy {
       this.subscription = this.fetchService.singleCoin$.subscribe((singleCoin) => {
         this.coin = singleCoin;
         console.log(this.coin);
+        this.chartColor = this.coin.color || 'rgba(0, 123, 255, 1)'
         this.getATHDate(this.coin);
         this.updateChartData(this.coin);
         if (this.chart) {
@@ -97,16 +117,38 @@ export class CoinViewComponent implements OnInit, OnDestroy {
   }
 
   updateChartData(coin: any) {
-    this.lineChartData.labels = [];
-    this.lineChartData.datasets[0].data = [];
-
+    this.lineChartData = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          label: '24h price',
+          borderColor: this.chartColor || 'rgba(0, 123, 255, 1)',
+          backgroundColor: this.createGradient(), 
+          fill: true,
+        }
+      ]
+    };
+  
     if (coin && coin.sparkline) {
       const filteredSparkline = coin.sparkline
-        .filter((value: any) => value !== null) 
-        .map((value: any) => parseFloat(value)); 
-
-      this.lineChartData.labels = filteredSparkline.map((_: any, index: number) => `Point ${index + 1}`);
+        .filter((value: any) => value !== null)
+        .map((value: any) => parseFloat(value));
+  
+      this.lineChartData.labels = filteredSparkline.map((_: any, index: number) => `${index + 1}`);
       this.lineChartData.datasets[0].data = filteredSparkline;
     }
+  }
+  
+  createGradient() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return 'rgba(0, 123, 255, 0.2)';
+    }
+    const gradient = ctx.createLinearGradient(0, 100, 0, 1000);
+    gradient.addColorStop(0, this.chartColor || 'rgba(0, 123, 255, 0.5)'); 
+    gradient.addColorStop(1, 'rgba(0, 123, 255, 0)'); 
+    return gradient;
   }
 }
