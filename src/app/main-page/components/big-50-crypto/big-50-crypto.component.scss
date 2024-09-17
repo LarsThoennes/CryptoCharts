@@ -1,0 +1,43 @@
+.big50CryptoContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .big50CryptoResponsive {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 1440px;
+
+        table {
+            width: 1200px;
+            border-collapse: collapse;
+            text-align: left;
+
+            thead {
+                height: 70px;
+                background: white;
+            }
+
+            tbody tr {
+                height: 70px;
+
+                th, td {
+                    padding: 16px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+
+                    .cryptoLogo {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(186, 128, 217);
+                }
+            }
+        }
+    }
+}

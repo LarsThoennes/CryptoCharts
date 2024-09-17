@@ -1,0 +1,43 @@
+<!-- <div *ngIf="coins.length > 0">
+    <div *ngFor="let coin of coins">
+      <h2>{{ coin.name }} ({{ coin.symbol }})</h2>
+      <p>Preis: {{ coin.price }}</p>
+      <p>24-Stunden-Änderung: {{ coin.change }}%</p>
+      <p>Marktkapitalisierung: {{ coin.marketCap }}</p>
+      <img [src]="coin.iconUrl" alt="{{ coin.name }} Icon" />
+      <hr />
+    </div>
+</div>
+  
+<div *ngIf="coins.length === 0">
+    <p>Loading...</p>
+</div>
+   -->
+   <div class="big50CryptoContainer">
+    <div class="big50CryptoResponsive">
+      <h1 class="headline">BIG 50 CRYPTO</h1>
+      <div *ngIf="coins.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Logo</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Change (Today)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr (click)="openCrypto(coin.uuid)" *ngFor="let coin of coins">
+              <td><h2>{{ coin.rank }}</h2></td>
+              <td class="tdBigContent"><img class="cryptoLogo" [src]="coin.iconUrl" [srcset]="coin.iconUrl + ' 1x, ' + coin.iconUrl.replace('.svg', '@2x.svg') + ' 2x'" alt="{{ coin.name }} Icon" loading="eager" /></td>
+              <td class="tdBigContent"><h2>{{ coin.name }} ({{ coin.symbol }})</h2></td>
+              <td class="tdBigContent"><h2>{{ coin.price }} $</h2></td>
+              <td class="tdBigContent"><h2>{{ coin.change }}%</h2></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

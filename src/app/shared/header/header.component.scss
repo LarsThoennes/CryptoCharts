@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+
+    .headerResponsive {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1440px;
+        .header-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+    
+            img {
+                height: 80px;
+                width: auto;
+            }
+    
+            h1 {
+                color: rgb(255, 255, 255);
+            }
+        }
+
+        .header-right {
+            a {
+                margin: 32px;
+                text-decoration: none;
+                color: rgb(13,63,140);
+
+                &:hover {
+                    cursor: pointer;
+                    color: rgb(99,253,253);
+                }
+            }
+        }
+    }
+}

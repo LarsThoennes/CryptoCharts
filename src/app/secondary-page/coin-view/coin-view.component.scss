@@ -1,0 +1,61 @@
+.coinViewContainer {
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+    .coinViewResponsive {
+        width: 1440px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .coinViewContent {
+            width: 1200px;
+            height: 80vh;
+            border: 2px solid white;
+            border-radius: 15px;
+            margin: 40px;
+
+            .coinViewHeadline {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin: 40px;
+                width: 1100px;
+
+                .coinViewHeadlineLeft {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 16px;
+                    .cryptoLogo {
+                        height: 40px;
+                        width: auto;
+                    }
+    
+                    h1 {
+                        font-size: 32px;
+                    }
+
+                    .todayChange {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 12px;
+
+                        img {
+                            height: 20px;
+                            width: auto;
+                        }
+                    }
+                }
+            }
+
+            .coinViewDescription {
+                width: 1100px;
+            }
+        }
+    }
+}

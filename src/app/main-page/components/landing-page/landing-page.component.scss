@@ -1,0 +1,67 @@
+.landingPageContainer {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+
+    .landingPageResponsive {
+        width: 1440px;
+        display: flex;
+        justify-content: center;
+        padding-top: 120px;
+
+        .landingPageContent {
+            width: 80%;
+            height: 60vh;
+            border: 2px solid white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+
+            .landingpageContentLeft {
+                height: 50vh;
+                width: 40%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                h1 {
+                    color: white;
+                }
+
+                button {
+                    margin-top: 24px;
+                    height: 40px;
+                    width: 200px;
+                    border: none;
+                    border-radius: 6px;
+                    animation: 3s button-color-change infinite;
+                    color: white;
+                    font-size: 16px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .landingpageContentRight {
+                img {
+                    height: 50vh;
+                }
+            }
+        }
+    }
+}
+
+@keyframes button-color-change {
+    0% {
+        background-color: rgb(106, 13, 173);
+    } 50% {
+        background-color: rgb(186, 128, 217);
+    } 100% {
+        background-color: rgb(106, 13, 173);
+    }
+}

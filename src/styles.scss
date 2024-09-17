@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    font-family: 'ChakraPetch-Bold';
+}
+
+body {
+    background: linear-gradient(to bottom right, rgb(106, 13, 173), rgb(186, 128, 217));
+}
+
+.headline {
+    font-size: 60px;
+    padding-bottom: 40px;
+}
+
+.changeTodayPositiv {
+    color: green;
+    margin-left: 24px;
+}
+
+.changeTodayNegativ {
+    color: red;
+    margin-left: 24px;
+}
+
+@font-face {
+    font-family: 'ChakraPetch-Bold';
+    src: url('./assets/fonts/Chakra_Petch/ChakraPetch-Bold.ttf');
+}
